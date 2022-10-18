@@ -1,0 +1,37 @@
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  position: relative;
+}
+
+canvas {
+  width: 90vw;
+  height: 90vh;
+  border: 1px solid black;
+}
+
+.left {
+  position: absolute;
+  display: flex;
+  top: -0.5%;
+  bottom: 9.5%;
+  right: 100.5%;
+  text-align: right;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.bottom {
+  position: absolute;
+  display: flex;
+  left: 0;
+  right: 0;
+  top: 100.5%;
+  justify-content: space-between;
+}
