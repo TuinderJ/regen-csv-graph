@@ -27,15 +27,15 @@ const renderGraph = data => {
   const fill = [
     {
       color: `red`,
-      dataset: `"Aftertreatment Diesel Oxidation Catalyst Intake Temperature (�F)"`,
+      dataset: `Aftertreatment Diesel Oxidation Catalyst Intake Temperature (�F)`,
     },
     {
       color: `green`,
-      dataset: `"Aftertreatment Diesel Particulate Filter Intake Temperature (�F)"`,
+      dataset: `Aftertreatment Diesel Particulate Filter Intake Temperature (�F)`,
     },
     {
       color: `blue`,
-      dataset: `"Aftertreatment Diesel Particulate Filter Outlet Temperature (�F)"`,
+      dataset: `Aftertreatment Diesel Particulate Filter Outlet Temperature (�F)`,
     },
   ];
 
@@ -43,6 +43,7 @@ const renderGraph = data => {
   fill.forEach(({ dataset }) => {
     data.forEach(row => {
       if (row !== undefined) {
+        // console.log(row);
         const y = row[dataset].replaceAll(`"`, ``);
         if (y > canvas.height) canvas.height = y;
       }
@@ -98,19 +99,25 @@ const renderGraph = data => {
     // Fill out Legend
     const div = document.createElement(`div`);
     div.style.color = color;
-    (div.textContent = dataset.replaceAll(`"`, ``)).replace(`�`, `°`);
+    div.textContent = dataset.replace(`�`, `°`);
     bottom.appendChild(div);
   });
 };
 
 const csvToArray = (str, delimiter = `,`) => {
+  // Delete the top information
   let csvStr = str;
-  for (let i = 0; i < 33; i++) {
+  let i = 0;
+  while (true) {
+    if (i === 100) break;
+    if (csvStr.substring(0, 4) === `Date` || csvStr.substring(0, 6) === `"Date"`) break;
     csvStr = csvStr.slice(csvStr.indexOf(`\n`) + 1);
+    i++;
   }
 
-  const headers = csvStr.split(`\n`).slice(0, 1).join().split(delimiter);
+  let headers = csvStr.split(`\n`).slice(0, 1).join().split(delimiter);
   headers.pop();
+  headers = headers.map(header => header.replaceAll(`"`, ``));
 
   let rows = csvStr.slice(csvStr.indexOf(`\n`) + 1).split(`\n`);
   rows = rows.map(row => {
