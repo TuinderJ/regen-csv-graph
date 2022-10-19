@@ -1,3 +1,13 @@
+::-webkit-scrollbar {
+  width: 10px;
+  height: 0;
+  background-color: #eee;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ccc;
+}
+
 body {
   margin: 0;
   display: flex;
@@ -10,9 +20,37 @@ body {
   position: relative;
 }
 
-canvas {
+body ul {
+  position: absolute;
+  list-style: none;
+  top: 0;
+  margin-left: 1em;
+  padding: 0.5em;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25em;
+  background-color: white;
+  overflow: scroll;
+  max-height: 75%;
+}
+
+body ul li {
+  cursor: pointer;
+}
+
+body ul li:hover {
+  background-color: #ccc;
+}
+
+.container button {
+  position: absolute;
+  bottom: 101%;
+}
+
+.container canvas {
   width: 90vw;
-  height: 90vh;
+  height: 80vh;
   border: 1px solid black;
 }
 
