@@ -57,9 +57,9 @@ body ul li:hover {
 .left {
   position: absolute;
   display: flex;
-  top: -0.5%;
-  bottom: 9.5%;
-  right: 100.5%;
+  top: -0.5em;
+  bottom: -0.25em;
+  right: 100.1%;
   text-align: right;
   flex-direction: column;
   justify-content: space-between;

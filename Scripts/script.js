@@ -149,6 +149,7 @@ const renderGraphedData = e => {
   const container = document.querySelector(`.container`);
   const left = document.createElement(`div`);
   container.appendChild(left);
+
   left.classList.add(`left`);
   const bottom = document.createElement(`div`);
   bottom.classList.add(`bottom`);
@@ -156,7 +157,7 @@ const renderGraphedData = e => {
 
   // Horizontal bars
   const numberOfHorizontalDataPoints = canvas.height / 100;
-  for (let i = 1; i < numberOfHorizontalDataPoints + 1; i++) {
+  for (let i = 1; i < numberOfHorizontalDataPoints + 2; i++) {
     const div = document.createElement(`div`);
     div.textContent = ((canvas.height / numberOfHorizontalDataPoints) * (numberOfHorizontalDataPoints + 1 - i)).toFixed(0);
     left.appendChild(div);
